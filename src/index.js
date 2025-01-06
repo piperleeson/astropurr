@@ -1,5 +1,6 @@
 import { signUp, logIn, logOut, monitorAuthState } from './auth.js';
 import app from './firebase-config';
+import { getAuth } from 'firebase/auth';
 const auth = getAuth(app);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +17,7 @@ const loginButtons = document.getElementsByClassName('logInButton');
 for (let button of loginButtons) {
     button.addEventListener('click', function () {
         window.location.href = 'login.html';
+        console.log("login button clicked")
     });
 }
 
