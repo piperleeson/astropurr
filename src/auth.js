@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, onAuthStateChanged } from 'firebase/auth';
 import app from './firebase-config';
 
 const auth = getAuth(app);
@@ -10,15 +10,21 @@ export const monitorAuthState = (callback) => {
     });
 };
 
-// Sign up a new user
-export const signUp = async (email, password) => {
+export async function signUp(email, password, displayName) {
     try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        console.log('User signed up:', userCredential.user);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+  
+      // Set the display name after user creation
+      await updateProfile(user, {
+        displayName: displayName
+      });
+  
+      console.log('User created and display name set:', user);
     } catch (error) {
-        console.error('Error signing up:', error.message);
+      console.error('Error creating user:', error.message);
     }
-};
+  }
 
 // Log in a user
 export const logIn = async (email, password) => {

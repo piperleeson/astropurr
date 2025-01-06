@@ -4,9 +4,13 @@ import { getAuth } from 'firebase/auth';
 const auth = getAuth(app);
 
 document.addEventListener('DOMContentLoaded', () => {
+    
+const greetingElement = document.getElementById('greeting');
 
 monitorAuthState((user) => {
     if (user) {
+        const displayName = user.displayName || user.email;
+        greetingElement.innerHTML = `Hi, ${displayName}! Welcome to your profile.`;
         console.log('User is signed in:', user);
     } else {
         console.log('User is signed out');
@@ -35,13 +39,22 @@ for (let button of logOutButtons) {
     });
 }
 
+const signupButtons = document.getElementsByClassName('signupButton');
+for (let button of signupButtons) {
+    button.addEventListener('click', function () {
+        window.location.href = 'signup.html';
+    });
+}
+
 const signupForm = document.getElementById('signupForm');
 if (signupForm) {
     signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const displayName = document.getElementById('signupDisplayName').value;
         const email = document.getElementById('signupEmail').value;
         const password = document.getElementById('signupPassword').value;
-        await signUp(email, password);
+        await signUp(email, password, displayName);
+        window.location.href = 'profile.html'
     });
 }
 
@@ -52,6 +65,7 @@ if (loginForm) {
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
         await logIn(email, password);
+        window.location.href = 'profile.html'
     });
 }
 
