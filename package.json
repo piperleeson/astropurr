@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "firebase": "^11.1.0",
-    "firebase-admin": "^13.0.2"
+    "firebase-admin": "^13.0.2",
+    "html-webpack-plugin": "^5.0.0",
+    "webpack": "^5.0.0"
   }
 }
