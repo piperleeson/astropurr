@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "astropurr-979b2",
     "public": "dist",
     "ignore": [
       "firebase.json",

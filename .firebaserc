@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "astropurr"
-  }
+    "default": "astropurr",
+    "new astropurr": "astropurr-979b2"
+  },
+  "targets": {},
+  "etags": {}
 }
