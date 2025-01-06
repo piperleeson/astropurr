@@ -2,17 +2,13 @@ import { signUp, logIn, logOut, monitorAuthState } from './auth.js';
 import app from './firebase-config';
 const auth = getAuth(app);
 
+document.addEventListener('DOMContentLoaded', () => {
+
 monitorAuthState((user) => {
     if (user) {
-        // User is signed in
         console.log('User is signed in:', user);
-        // Redirect to another page, or update the UI
-        window.location.href = 'index.html';
     } else {
-        // User is signed out
         console.log('User is signed out');
-        // Redirect to the login page or update the UI
-        window.location.href = 'login.html';
     }
 });
 
@@ -62,5 +58,5 @@ if (logoutButton) {
     logoutButton.addEventListener('click', async () => {
         await logOut();
     });
-}
-
+};
+});
