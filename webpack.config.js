@@ -31,6 +31,16 @@ module.exports = {
       template: './src/index.html', // Path to your source HTML file
       filename: 'index.html',
         }
-    )
+    ),
+    new HtmlWebpackPlugin({
+        template: './src/login.html', // Another HTML file
+        filename: 'login.html', // Output filename
+      }
+    ),
+    new HtmlWebpackPlugin({
+        template: './src/chart-generator.html', // Another HTML file
+        filename: 'chart-generator.html', // Output filename
+      }
+    ),
     ]
 };
