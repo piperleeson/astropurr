@@ -42,5 +42,20 @@ module.exports = {
         filename: 'chart-generator.html', // Output filename
       }
     ),
+    new HtmlWebpackPlugin({
+        template: './src/chart-display.html', // Another HTML file
+        filename: 'chart-display.html', // Output filename
+      }
+    ),
+    new HtmlWebpackPlugin({
+        template: './src/edit-profile.html', // Another HTML file
+        filename: 'edit-profile.html', // Output filename
+      }
+    ),
+    new HtmlWebpackPlugin({
+        template: './src/profile.html', // Another HTML file
+        filename: 'profile.html', // Output filename
+      }
+    ),
     ]
 };
